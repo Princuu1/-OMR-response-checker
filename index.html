@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Mains OMR Sheet Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h2>JEE Mains OMR Checker</h2>
+    </header>
+
+    <!-- Candidate Information Section -->
+    <div id="candidate-info">
+        <label for="candidateName">Candidate Name:</label>
+        <input type="text" id="candidateName">
+        <label for="testNo">Test No:</label>
+        <input type="text" id="testNo">
+        <label for="testCode">Test Code:</label>
+        <input type="text" id="testCode">
+        <label for="batchName">Batch Name:</label>
+        <input type="text" id="batchName">
+    </div>
+
+    <!-- Subject Sections and Buttons -->
+    <div id="subject-sections">
+        <button onclick="toggleSection('physicsMcqSection')">Physics MCQ</button>
+        <button onclick="toggleSection('physicsIntSection')">Physics Integer</button>
+        <button onclick="toggleSection('chemistryMcqSection')">Chemistry MCQ</button>
+        <button onclick="toggleSection('chemistryIntSection')">Chemistry Integer</button>
+        <button onclick="toggleSection('mathMcqSection')">Mathematics MCQ</button>
+        <button onclick="toggleSection('mathIntSection')">Mathematics Integer</button>
+
+        <!-- Physics MCQ Section -->
+        <div id="physicsMcqSection" class="subject-section">
+            <h3>Physics MCQs</h3>
+            <table id="physicsMcqTable"></table>
+        </div>
+
+        <!-- Physics Integer Section -->
+        <div id="physicsIntSection" class="subject-section">
+            <h3>Physics Integers</h3>
+            <table id="physicsIntTable"></table>
+        </div>
+
+        <!-- Chemistry MCQ Section -->
+        <div id="chemistryMcqSection" class="subject-section">
+            <h3>Chemistry MCQs</h3>
+            <table id="chemistryMcqTable"></table>
+        </div>
+
+        <!-- Chemistry Integer Section -->
+        <div id="chemistryIntSection" class="subject-section">
+            <h3>Chemistry Integers</h3>
+            <table id="chemistryIntTable"></table>
+        </div>
+
+        <!-- Mathematics MCQ Section -->
+        <div id="mathMcqSection" class="subject-section">
+            <h3>Mathematics MCQs</h3>
+            <table id="mathMcqTable"></table>
+        </div>
+
+        <!-- Mathematics Integer Section -->
+        <div id="mathIntSection" class="subject-section">
+            <h3>Mathematics Integers</h3>
+            <table id="mathIntTable"></table>
+        </div>
+    </div>
+
+    <!-- Submit Button for OMR -->
+    <button id="submitOMRButton" onclick="submitOMR()">Submit OMR</button>
+
+    <!-- Answer Key Form -->
+    <div id="answerKeySheet" style="display:none;">
+        <h3>Enter Answer Key</h3>
+        <form id="answerKeyForm"></form>
+        <button onclick="submitAnswerKey()">Submit Answer Key</button>
+    </div>
+
+    <!-- Score Popup -->
+    <div id="resultPopup" class="popup" style="display:none;">
+        <div id="scoreDetails"></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created by: Purvansh with ❤️</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
