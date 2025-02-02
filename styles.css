@@ -1,92 +1,160 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f5);
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
 label {
-    margin-right: 10px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
 }
 
+/* Candidate Info Section */
 #candidate-info {
-    background-color: #e0f7fa;
-    padding: 15px;
+    background: #b1f3cf00;
+    color: #333;
+    padding: 20px;
     margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
 }
 
+/* Subject Sections */
 .subject-section {
     display: none;
-    background-color: #ffffff;
-    padding: 15px;
+    background: white;
+    padding: 20px;
     margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
+/* Buttons */
 button {
-    margin: 10px;
-    padding: 10px;
-    background-color: #4CAF50;
+    margin: 10px 0;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #FFB74D, #FF9800);
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 25px;
     font-size: 16px;
+    transition: all 0.3s;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #45a049;
+    background: linear-gradient(135deg, #FFA726, #FB8C00);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Table Styling */
 table {
     width: 100%;
     margin: 20px 0;
     border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #ddd;
     text-align: center;
+    padding: 12px;
+}
+
+th {
+    background: #64B5F6;
+    color: white;
+}
+
+td {
+    background: #E3F2FD;
+}
+
+/* Inputs */
+input[type="text"], input[type="number"] {
+    width: 100%;
     padding: 10px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
     box-sizing: border-box;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
-input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+input:focus {
+    border-color: #64B5F6;
+    outline: none;
+    box-shadow: 0 0 5px rgba(100, 181, 246, 0.5);
 }
 
+/* Popup Styles */
 .popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 2px solid black;
-    width: 300px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    width: 80%;
+    max-width: 350px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .popup button {
-    margin-top: 10px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #FF5252, #D32F2F);
+}
+
+.popup button:hover {
+    background: linear-gradient(135deg, #E53935, #C62828);
 }
 
 .popup #scoreDetails {
     font-size: 1.2em;
     line-height: 1.5em;
     color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
 }
