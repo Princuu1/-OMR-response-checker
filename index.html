@@ -1,160 +1,97 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: linear-gradient(135deg, #ffffff, #f0f0f5);
-    color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Mains OMR Sheet Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
+    <!-- Header -->
+    <header>
+        <h2>JEE Mains OMR Checker</h2>
+    </header>
 
-label {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 5px;
-    color: #444;
-}
+    <!-- Candidate Information Section -->
+    <div id="candidate-info">
+        <label for="candidateName">Candidate Name:</label>
+        <input type="text" id="candidateName">
+        <label for="testNo">Test No:</label>
+        <input type="text" id="testNo">
+        <label for="testCode">Test Code:</label>
+        <input type="text" id="testCode">
+        <label for="batchName">Batch Name:</label>
+        <input type="text" id="batchName">
+    </div>
 
-/* Candidate Info Section */
-#candidate-info {
-    background: #b1f3cf00;
-    color: #333;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
-}
+    <!-- Subject Sections and Buttons -->
+    <div id="subject-sections">
+        <button onclick="toggleSection('physicsMcqSection')">Physics MCQ</button>
+        <button onclick="toggleSection('physicsIntSection')">Physics Integer</button>
+        <button onclick="toggleSection('chemistryMcqSection')">Chemistry MCQ</button>
+        <button onclick="toggleSection('chemistryIntSection')">Chemistry Integer</button>
+        <button onclick="toggleSection('mathMcqSection')">Mathematics MCQ</button>
+        <button onclick="toggleSection('mathIntSection')">Mathematics Integer</button>
 
-/* Subject Sections */
-.subject-section {
-    display: none;
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-}
+        <!-- Physics MCQ Section -->
+        <div id="physicsMcqSection" class="subject-section">
+            <h3>Physics MCQs</h3>
+            <table id="physicsMcqTable"></table>
+        </div>
 
-/* Buttons */
-button {
-    margin: 10px 0;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #FFB74D, #FF9800);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 25px;
-    font-size: 16px;
-    transition: all 0.3s;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+        <!-- Physics Integer Section -->
+        <div id="physicsIntSection" class="subject-section">
+            <h3>Physics Integers</h3>
+            <table id="physicsIntTable"></table>
+        </div>
 
-button:hover {
-    background: linear-gradient(135deg, #FFA726, #FB8C00);
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
+        <!-- Chemistry MCQ Section -->
+        <div id="chemistryMcqSection" class="subject-section">
+            <h3>Chemistry MCQs</h3>
+            <table id="chemistryMcqTable"></table>
+        </div>
 
-/* Table Styling */
-table {
-    width: 100%;
-    margin: 20px 0;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+        <!-- Chemistry Integer Section -->
+        <div id="chemistryIntSection" class="subject-section">
+            <h3>Chemistry Integers</h3>
+            <table id="chemistryIntTable"></table>
+        </div>
 
-table, th, td {
-    border: 1px solid #ddd;
-    text-align: center;
-    padding: 12px;
-}
+        <!-- Mathematics MCQ Section -->
+        <div id="mathMcqSection" class="subject-section">
+            <h3>Mathematics MCQs</h3>
+            <table id="mathMcqTable"></table>
+        </div>
 
-th {
-    background: #64B5F6;
-    color: white;
-}
+        <!-- Mathematics Integer Section -->
+        <div id="mathIntSection" class="subject-section">
+            <h3>Mathematics Integers</h3>
+            <table id="mathIntTable"></table>
+        </div>
+    </div>
 
-td {
-    background: #E3F2FD;
-}
+    <!-- Submit Button for OMR -->
+    <button id="submitOMRButton" onclick="submitOMR()">Submit OMR</button>
 
-/* Inputs */
-input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 16px;
-    transition: 0.3s;
-}
+    <!-- Answer Key Form -->
+    <div id="answerKeySheet" style="display:none;">
+        <h3>Enter Answer Key</h3>
+        <form id="answerKeyForm"></form>
+        <button onclick="submitAnswerKey()">Submit Answer Key</button>
+    </div>
 
-input:focus {
-    border-color: #64B5F6;
-    outline: none;
-    box-shadow: 0 0 5px rgba(100, 181, 246, 0.5);
-}
+    <!-- Score Popup -->
+    <div id="resultPopup" class="popup" style="display:none;">
+        <div id="scoreDetails"></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
 
-/* Popup Styles */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    border: 2px solid #333;
-    width: 80%;
-    max-width: 350px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+    <!-- Footer -->
+    <footer>
+        <p>Created by: Purvansh with ❤️</p>
+    </footer>
 
-.popup button {
-    margin-top: 15px;
-    background: linear-gradient(135deg, #FF5252, #D32F2F);
-}
-
-.popup button:hover {
-    background: linear-gradient(135deg, #E53935, #C62828);
-}
-
-.popup #scoreDetails {
-    font-size: 1.2em;
-    line-height: 1.5em;
-    color: #333;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    table, th, td {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    button {
-        width: 100%;
-        font-size: 14px;
-        padding: 10px;
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
